@@ -46,7 +46,7 @@ const sellerRouter = require("./routes/sellers");
 const uploadImageRouter = require('./routes/upload');
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://real-estate-properties-ms-frontend.onrender.com");
+    res.header("Access-Control-Allow-Origin", process.env.DOMAIN_NAME_FRONTEND);
     res.header("Access-Control-Allow-Credentials", true);
     res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");

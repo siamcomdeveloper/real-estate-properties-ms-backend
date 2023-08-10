@@ -1,11 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Realtor = require("../backend/models/realtor");
-const app = express();
+
 const cors = require("cors");
 const port = process.env.PORT || 3000;
+
+const app = express();
 app.use(express.json());
 app.use(cors());
+
+const Realtor = require("../backend/models/realtor");
+
 mongoose.connect(
   `${process.env.DATABASE_URI}`,
   {
