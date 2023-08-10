@@ -52,6 +52,13 @@ const realtorRoute = require("./routes/realtor");
 const sellerRouter = require("./routes/sellers");
 const uploadImageRouter = require('./routes/upload');
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    next();
+});
+
 app.use("/property", propertyRouter);
 app.use("/realtors", realtorRoute);
 app.use("/sellers", sellerRouter);
