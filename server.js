@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
 
-const path = require('path');
 const corsOptions = require('./config/corsOptions');
 const { logger } = require('./middleware/logEvents');
 const errorHandler = require('./middleware/errorHandler');
@@ -40,11 +38,6 @@ app.use('/images', express.static('images'));
 
 //Connect to MongoDB
 connectDB();
-// mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true });
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//   console.log("MongoDB database connection established successfully");
-// })
 
 // import routes
 const propertyRouter = require("./routes/property");

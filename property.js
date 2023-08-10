@@ -12,8 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
-//   `${process.env.DATABASE_URI}/propertyDB`,
-  `mongodb+srv://realuser:real1234@cluster0.f2vcvei.mongodb.net/realestate`,
+  `${process.env.DATABASE_URI}`,
   {
     useNewUrlParser: true,
   }
@@ -56,7 +55,7 @@ const p1 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 1,
-    imgUrl: "http://localhost:5000/images/property.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property.jpg"
 });
 
 const p2 = new Property({
@@ -72,7 +71,7 @@ const p2 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 2,
-    imgUrl: "http://localhost:5000/images/property2.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property2.jpg"
 });
 
 const p3 = new Property({
@@ -88,7 +87,7 @@ const p3 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 1,
-    imgUrl: "http://localhost:5000/images/property.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property.jpg"
 });
 
 const p4 = new Property({
@@ -104,7 +103,7 @@ const p4 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 3,
-    imgUrl: "http://localhost:5000/images/property2.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property2.jpg"
 });
 
 const p5 = new Property({
@@ -120,7 +119,7 @@ const p5 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 2,
-    imgUrl: "http://localhost:5000/images/property.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property.jpg"
 });
  
 const p6 = new Property({
@@ -136,7 +135,7 @@ const p6 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 2,
-    imgUrl: "http://localhost:5000/images/property2.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property2.jpg"
 });
 
 const p7 = new Property({
@@ -152,7 +151,7 @@ const p7 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 1,
-    imgUrl: "http://localhost:5000/images/property.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property.jpg"
 });
 
 const p8 = new Property({
@@ -168,16 +167,10 @@ const p8 = new Property({
     postalCode: "V9V1V9",
     commenceDate: "2023-08-11",
     status: 3,
-    imgUrl: "http://localhost:5000/images/property2.jpg"
+    imgUrl: "https://real-estate-properties-ms-backend.onrender.com/images/property2.jpg"
 });
 
 Property.insertMany([p1, p2, p3, p4, p5, p6, p7, p8]);
-//  Property.insertMany([p1, p2, p3, p4, p5, p6, p7, p8], function (err) {
-//   if (err) {
-//   console.log(err);
-//   } else {
-//   console.log("successfully created db");
-//   }
-//  });
-  app.listen(3000)
- console.log('App running http://localhost:3000')
+
+app.listen(port)
+console.log(`App running ${process.env.DOMAIN_NAME_BACKEND}`);

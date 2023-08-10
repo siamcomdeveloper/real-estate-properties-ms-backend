@@ -10,8 +10,6 @@ const sellerSchema = new mongoose.Schema({
   phone_number: { type: String, required: true },
   propertyId: { type: String, required: true },
   status: { type: String, required: true },
-  // commission_rate: {type: Number, required: true },
-  // commission_amount: {type: Number, required: true },
 });
 
 module.exports = mongoose.model("Seller", sellerSchema);
