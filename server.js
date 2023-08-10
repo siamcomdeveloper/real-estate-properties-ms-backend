@@ -1,32 +1,71 @@
-
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 
-// require('dotenv').config();
+const path = require('path');
+const corsOptions = require('./config/corsOptions');
+const { logger } = require('./middleware/logEvents');
+const errorHandler = require('./middleware/errorHandler');
+const verifyJWT = require('./middleware/verifyJWT');
+const cookieParser = require('cookie-parser');
+const credentials = require('./middleware/credentials');
+const connectDB = require('./config/dbConn');
 
 const app = express();
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+// custom middleware logger
+app.use(logger);
+
+//Handle options credentials check - BEFORE CORS!
+//and fetch cookies credentials requirement
+app.use(credentials);
+
+// Cross Origin Resource Sharing
+app.use(cors(corsOptions));
+
+// built-in middleware to handle urlencoded form data
+app.use(express.urlencoded({ extended: false }));
+
+// built-in middleware for json 
 app.use(express.json());
 
-// const uri = process.env.ATLAS_URI;
-// const uri = "mongodb+srv://newuser:123@cluster0.f9d6o.gcp.mongodb.net/activitiescollections";
-const uri = "mongodb+srv://realuser:real1234@cluster0.f2vcvei.mongodb.net/?retryWrites=true&w=majority";
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true   }
-);
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
+//middleware for cookies
+app.use(cookieParser());
 
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
+
+//Connect to MongoDB
+connectDB();
+// mongoose.connect(process.env.DATABASE_URI, { useNewUrlParser: true, useCreateIndex: true,  useUnifiedTopology: true });
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//   console.log("MongoDB database connection established successfully");
+// })
 
 // import routes
-const bookRouter = require('./routes/activities');
+const propertyRouter = require("./routes/property");
+const realtorRoute = require("./routes/realtor");
+const sellerRouter = require("./routes/sellers");
+const uploadImageRouter = require('./routes/upload');
 
-// adding /books to before all routes
-app.use('/activity', bookRouter);
+app.use("/property", propertyRouter);
+app.use("/realtors", realtorRoute);
+app.use("/sellers", sellerRouter);
+app.use('/upload', uploadImageRouter);
+
+app.use('/register', require('./routes/register'));
+app.use('/auth', require('./routes/auth'));
+app.use('/refresh', require('./routes/refresh'));
+app.use('/logout', require('./routes/logout'));
+
+app.use(verifyJWT);
+app.use('/employees', require('./routes/api/employees'));
+
+app.use(errorHandler);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

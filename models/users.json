@@ -1,0 +1,29 @@
+[
+    {
+        "username": "quanle",
+        "roles": {
+            "User": 2001,
+            "Editor": 1984,
+            "Admin": 5150
+        },
+        "password": "$2b$10$PKC/jBYNVlCmZqUgUS1tn.HeRShXjh5ZaUB8DYhpd/BNL.gyPSbE.",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InF1YW5sZSIsImlhdCI6MTY5MTE2MTE0NywiZXhwIjoxNjkxMjQ3NTQ3fQ.TfPHWUuXBCZFXRrmAdAgq8VUFIVb5dPZ-cIhGqTOoe8"
+    },
+    {
+        "username": "Quan14",
+        "roles": {
+            "User": 2001,
+            "Editor": 1984
+        },
+        "password": "$2b$10$A2H8AVpbAVpbRuGDCwd22ulQ4wBUGLy2QptX0dZ9mqKbzqON1hq7W",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlF1YW4xNCIsImlhdCI6MTY5MTE2MTMxMSwiZXhwIjoxNjkxMjQ3NzExfQ.6QrCbCi4xwfRE15_TjhEswgVC5NGSjdzUzf8vtWaXB0"
+    },
+    {
+        "username": "Quan1",
+        "roles": {
+            "User": 2001
+        },
+        "password": "$2b$10$2iN1nmCrao7/qDuSLije.u4gnW5AEDTs1M67SYxbIZwY5HrQjOJNy",
+        "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlF1YW4xIiwiaWF0IjoxNjkxMTYxNjU4LCJleHAiOjE2OTEyNDgwNTh9.8ZRdxA8ZlPYZQuapFQxjFYTt9BRXhA-mvfv-R2tFEI4"
+    }
+]
